@@ -3,7 +3,7 @@
 Forked from [here (Keras GitHub)](https://github.com/keras-team/keras-io/blob/master/examples/rl/deep_q_network_breakout.py)
 
 ## Setup
- > Note: This is tested using Python 3.11
+ > **IMPORTANT**: This does NOT work for Python 3.12, some depdendencies are not available (like `ale-py`). Python 3.11 is verified to work.
 
 Run the following the first time after you've checked out the repo and every
 time you check it out to ensure you have the latest dependencies:
