@@ -19,12 +19,26 @@ To run the training on the CPU, simply call:
 python deep_q_network_breakout.py
 ```
 
-## Enabling Tensorflow/CUDA/GPU support through WSL2
+## Running on the GPU
+I have tested this on both Windows/WSL2  with an x86/nvidia setup as well as on an Apple Silicon M3 system using
+the `tensorflow-metal` plugin. In both setups, the GPU enabled variant performed a lot worse.
+But since I went through it, the following sections have details on how to enable GPU support.
+
+### Enabling Metal support on Apple Silicon
+This couldn't be simpler. After you have set up the project as described above, install just one more package:
+
+```
+pip install tensorflow-metal
+```
+
+That's it. Simply re-run the script and you will see log lines showing you that Metal support is being used.
+
+### Enabling Tensorflow/CUDA/GPU support through WSL2
 For me this ended up working, but the training speed was a lot slower than the
 CPU version. Even when running on a native Linux install, the results where the
 same.
 
-### Inside Ubuntu 22 on WSL2
+#### Inside Ubuntu 22 on WSL2
  - Install CUDA 11.8 (Not 12.X or a higher version, which doesn't seem to work!)
  - Follow https://www.tensorflow.org/install/pip#windows-wsl2
   - Don't use conda, but venv.
@@ -32,7 +46,7 @@ same.
    - Instead of install cuda at the end, install cuda-11-8
     - See https://askubuntu.com/questions/1394352/force-cuda-toolkit-version-11-6-in-ubuntu-18-04-latest-in-repos-is-9-1
 
-### GPU Setup
+#### GPU Setup
 Set the environment variables so that python can find CUDA and use it:
 ```
 . env_vars.sh
